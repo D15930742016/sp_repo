@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: zuul
+    
+server:
+  port: 3001
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+#对应转发的路径，默认，配不配置都可以
+#zuul:
+#  routes:
+#    item-service: /item-service/**
+#    user-service: /user-service/**
+#    order-service: /order-service/**
+
+
+#默认关闭，表示开启重试
+zuul:
+  retryable: true
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
